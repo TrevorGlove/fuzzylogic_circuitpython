@@ -11,9 +11,9 @@ Posteriormente, debemos establecer las funciones de membresía de estas variable
 import ulab.numpy as np
 
 Define las funciones de membresía del Setpoint
-SPN = fuzzy_membership(np.array([-60, -10]), 'zshaped linear')           # Setpoint Negativo
-SP0 = fuzzy_membership(np.array([-500, 0, 500]), 'triangular')           # Setpoint Cero
-SPP = fuzzy_membership(np.array([60, 10]), 'zshaped linear')             # Setpoint Positivo
+SPN = fuzzy_membership(np.array([-500, 500, -60, -10]), 'trapezoidal')    # Setpoint Negativo
+SP0 = fuzzy_membership(np.array([-500, 0, 500]), 'triangular')            # Setpoint Cero
+SPP = fuzzy_membership(np.array([10, 60, 500, 500]), 'trapezoidal')       # Setpoint Positivo
 
 SP = [SPN, SP0, SPP]
 
