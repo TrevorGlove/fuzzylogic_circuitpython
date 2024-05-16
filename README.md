@@ -3,7 +3,7 @@ FuzzyLib es una librería que incorpora lógica difusa en CircuitPython. Una de 
 
 ## Fuzzy Logic
 
-Para ilustrar visualmente cómo opera la lógica difusa en FuzzyLib, consideremos un ejemplo de control de posición de motor.
+Para ilustrar cómo opera la lógica difusa en FuzzyLib, consideremos un ejemplo de control de posición de motor.
 En primer lugar, es necesario definir las variables a fuzzificar, que en este caso son el setpoint y el error de posición.
 Posteriormente, debemos establecer las funciones de membresía de estas variables. En el código, esta definición se realiza de la siguiente manera:
 
@@ -38,7 +38,7 @@ V = [VAN, VBN, V0, VBP, VAP]
 
 ![Funciones de Membresía de Error de Velocidad y Derivada de Error de Velocidad](img/Membership.png)
 
-Si utilizaramos listas y arreglos, utilizando la funcion gc.mem_free() nos sale que consume una memoria de 848 bytes. Con Ulab Numpy, se consume 576 bytes.
+Si utilizaramos listas y arreglos, com la funcion gc.mem_free() nos sale que consume una memoria de 848 bytes. Con Ulab Numpy, esto de reduce a 576 bytes.
 
 Luego, se tienen que definir las Reglas Difusas. La forma de declarar las Reglas Difusas dependerá de la versión de la librería. En la versión 1.0, la forma de declarar era mediante esta matriz:
 
