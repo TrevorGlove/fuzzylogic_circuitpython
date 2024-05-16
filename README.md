@@ -62,7 +62,7 @@ R = [[SPN, ENA, VAN],
      [SPP, E0, V0],
      [SPP, EPB, VBP],
      [SPP, EPA, VAP]]
-"""
+```
 La interpretación de esta matriz es que cada regla difusa se aplica por fila. Ejemplo:
 Si el Setpoint es *Negativo* y el Error es "Negativo Alto", entonces la Velocidad es "Alta Negativa"
 Si el Setpoint es *Positivo* y el Error es "Negativo Corto", entonces la Velocidad es "Baja Negativa"
