@@ -27,11 +27,11 @@ EPA = fuzzy_membership(np.array([15, 300, 500, 500]), 'trapezoidal')     # Error
 E = [ENA, ENB, E0, EPB, EPA]
 
 # Definir las funciones de membresía de Velocidad
-VAN = fuzzy_membership(np.array([-65535, -43690, -21845]), 'triangular')        # Velocidad Alta Negativa
-VBN = fuzzy_membership(np.array([-43690, -21845, 0]), 'triangular')             # Velocidad Baja Negativa
-V0 = fuzzy_membership(np.array([-21845, -10000, 10000, 21845]), 'trapezoidal')  # Velocidad Cero
-VBP = fuzzy_membership(np.array([0, 21845, 43690]), 'triangular')               # Velocidad Baja Positiva
-VAP = fuzzy_membership(np.array([21845, 43690, 65535]), 'triangular')           # Velocidad Alta Positiva
+VAN = fuzzy_membership(np.array([-65535, -65535, -43690, -21845]), 'trapezoidal')   # Velocidad Alta Negativa
+VBN = fuzzy_membership(np.array([-43690, -21845, 0]), 'triangular')                 # Velocidad Baja Negativa
+V0 = fuzzy_membership(np.array([-21845, -10000, 10000, 21845]), 'trapezoidal')      # Velocidad Cero
+VBP = fuzzy_membership(np.array([0, 21845, 43690]), 'triangular')                   # Velocidad Baja Positiva
+VAP = fuzzy_membership(np.array([21845, 43690, 65535, 65535]), 'trapezoidal')       # Velocidad Alta Positiva
 
 V = [VAN, VBN, V0, VBP, VAP]
 ```
