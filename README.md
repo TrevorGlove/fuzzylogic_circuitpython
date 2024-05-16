@@ -1,11 +1,11 @@
 # FuzzyLib
-FuzzyLib es una librería que implementa una lógica difusa en Circuitpython. Le ventaja de utilizar Circuitpython es la librería Ulab con Numpy lo cual nos permite trabajar con vectores en Numpy que nos permite ahorrar memoria en el microcontrolador.
+FuzzyLib es una librería que incorpora lógica difusa en CircuitPython. Una de las principales ventajas de utilizar CircuitPython es la inclusión de la biblioteca Ulab con Numpy, lo que nos permite manipular vectores sin utilizar memoria a compración de los arreglos y listas.
 
 ## Fuzzy Logic
 
-Ahora se presentará visualmente cómo trabaja la lógica Difusa en FuzzyLib como para repasar un poco la teoría. En este ejemplo, se realizará un control de Posición de Motor.
-Primeramente, se tiene que definir las variables a fuzzificar. Para este caso, se ha determinado que son el Setpoint y el Error de Posición.
-Luego se tiene que definir los universos y las funciones de membresía de las variables. En el código se tiene que definir de esta manera.
+Para ilustrar visualmente cómo opera la lógica difusa en FuzzyLib, consideremos un ejemplo de control de posición de motor.
+En primer lugar, es necesario definir las variables a fuzzificar, que en este caso son el setpoint y el error de posición.
+Posteriormente, debemos establecer los universos y las funciones de membresía de estas variables. En el código, esta definición se realiza de la siguiente manera:
 
 ```python
 # Definir Universos de entrada (setpoint y setpoint) y salida (datacycle)
