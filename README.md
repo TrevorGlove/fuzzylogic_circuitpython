@@ -22,11 +22,11 @@ SPP = np.array([-100, 30, 45, 500])     # Setpoint Positivo
 
 SP = [SPN, SP0, SPP]
 
-ENL = np.array([-500, -500, -300, -15])  # Error Negativo Lejano
-ENC = np.array([-100, -50, 0])           # Error Negativo Cercano
+ENA = np.array([-500, -500, -300, -15])  # Error Negativo Alto
+ENB = np.array([-100, -50, 0])           # Error Negativo Bajo
 E0 = np.array([-40, 0, 40])              # Error Cero
-EPC = np.array([-15, 50, 200])           # Error Positivo Cercano
-EPL = np.array([15, 300, 500, 500])      # Error Positivo Lejano
+EPB = np.array([-15, 50, 200])           # Error Positivo Bajo
+EPA = np.array([15, 300, 500, 500])      # Error Positivo Alto
 
 E = [ENL, ENC, E0, EPC, EPL]
 
@@ -44,22 +44,32 @@ V = [VAN, VBN, V0, VBP, VAP]
 
 Si utilizaramos listas y arreglos, utilizando la funcion gc.mem_free() nos sale que consume una memoria de 848 bytes. Con Ulab Numpy, se consume 576 bytes.
 
-Luego, se tienen que definir las Reglas Difusas. La forma de declarar las Reglas Difusas dependerá de la versión de la librería. Al menos, en la versión 1.0, la forma de declarar era mediante esta matriz:
+Luego, se tienen que definir las Reglas Difusas. La forma de declarar las Reglas Difusas dependerá de la versión de la librería. En la versión 1.0, la forma de declarar era mediante esta matriz:
 
 ```python
-R = [[SPN, ENL, VAN],
-     [SPN, ENC, VBN],
+R = [[SPN, ENA, VAN],
+     [SPN, ENB, VBN],
      [SPN, E0, V0],
-     [SPN, EPC, VBP],
-     [SPN, EPL, VAP],
-     [SP0, ENL, VAN],
-     [SP0, ENC, VBN],
+     [SPN, EPB, VBP],
+     [SPN, EPA, VAP],
+     [SP0, ENA, VAN],
+     [SP0, ENB, VBN],
      [SP0, E0, V0],
-     [SP0, EPC, VBP],
-     [SP0, EPL, VAP],
-     [SPP, ENL, VAN],
-     [SPP, ENC, VBN],
+     [SP0, EPB, VBP],
+     [SP0, EPA, VAP],
+     [SPP, ENA, VAN],
+     [SPP, ENB, VBN],
      [SPP, E0, V0],
-     [SPP, EPC, VBP],
-     [SPP, EPL, VAP]]
+     [SPP, EPB, VBP],
+     [SPP, EPA, VAP]]
 """
+La interpretación de esta matriz es que cada regla difusa se aplica por fila. Ejemplo:
+Si el Setpoint es *Negativo* y el Error es "Negativo Alto", entonces la Velocidad es "Alta Negativa"
+Si el Setpoint es *Positivo* y el Error es "Negativo Corto", entonces la Velocidad es "Baja Negativa"
+Cabe recalcar que en esta versión solo se podia utilizar el operador "and". Con las actualizaciones, más operadores se va agregando, revisar la ocumentación en este repositorio.
+
+Por último, se aplica las reglas difusas a cada entrada. El resultado es una combinación de trapecios en la salida. Fuzzy Lib identifica los valores fuzzificados de la salida y lo defuzzifica por el método de centroide para obtener el valor final de la salida.
+
+![Defuzzificación](img/Fuzzyfication.png)
+
+Ya con la idea de cómo funciona La lógica Difusa en FuzzyLib, te invito a revisar la documentación sobre las versiones.
