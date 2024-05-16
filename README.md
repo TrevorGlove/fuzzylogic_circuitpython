@@ -5,37 +5,33 @@ FuzzyLib es una librería que incorpora lógica difusa en CircuitPython. Una de 
 
 Para ilustrar visualmente cómo opera la lógica difusa en FuzzyLib, consideremos un ejemplo de control de posición de motor.
 En primer lugar, es necesario definir las variables a fuzzificar, que en este caso son el setpoint y el error de posición.
-Posteriormente, debemos establecer los universos y las funciones de membresía de estas variables. En el código, esta definición se realiza de la siguiente manera:
+Posteriormente, debemos establecer las funciones de membresía de estas variables. En el código, esta definición se realiza de la siguiente manera:
 
 ```python
 import ulab.numpy as np
 
-# Definir Universos de entrada (setpoint y setpoint) y salida (datacycle)
-sp = np.array([-500, 500])
-e = np.array([-500, 500])
-v = np.array([-65535, 65535])
-
-# Definir las funciones de membresía de entrada
-SPN = np.array([-500, -500, -60, -10])  # Setpoint Negativo
-SP0 = np.array([-500, 0, 500])          # Setpoint Cero
-SPP = np.array([-100, 30, 45, 500])     # Setpoint Positivo
+Define las funciones de membresía del Setpoint
+SPN = fuzzy_membership(np.array([-60, -10]), 'zshaped linear')           # Setpoint Negativo
+SP0 = fuzzy_membership(np.array([-500, 0, 500]), 'triangular')           # Setpoint Cero
+SPP = fuzzy_membership(np.array([60, 10]), 'zshaped linear')             # Setpoint Positivo
 
 SP = [SPN, SP0, SPP]
 
-ENA = np.array([-500, -500, -300, -15])  # Error Negativo Alto
-ENB = np.array([-100, -50, 0])           # Error Negativo Bajo
-E0 = np.array([-40, 0, 40])              # Error Cero
-EPB = np.array([-15, 50, 200])           # Error Positivo Bajo
-EPA = np.array([15, 300, 500, 500])      # Error Positivo Alto
+# Define las funciones de membresía del Error
+ENA = fuzzy_membership(np.array([-500, -500, -300, -15]), 'trapezoidal') # Error Negativo Alto
+ENB = fuzzy_membership(np.array([-100, -50, 0]), 'triangular')           # Error Negativo Bajo
+E0 = fuzzy_membership(np.array([-40, 0, 40]), 'triangular')              # Error Cero
+EPB = fuzzy_membership(np.array([-15, 50, 200]), 'triangular')           # Error Positivo Bajo
+EPA = fuzzy_membership(np.array([15, 300, 500, 500]), 'trapezoidal')     # Error Positivo Alto
 
-E = [ENL, ENC, E0, EPC, EPL]
+E = [ENA, ENB, E0, EPB, EPA]
 
-# Definir las funciones de membresía de salida
-VAN = np.array([-65535, -65535, -43690, -21845])   # Velocidad Alta Negativa
-VBN = np.array([-43690, -21845, 0])                # Velocidad Baja Negativa
-V0 = np.array([-21845, -10000, 10000, 21845])      # Velocidad Cero
-VBP = np.array([0, 21845, 43690])                  # Velocidad Baja Negativa
-VAP = np.array([21845, 43690, 65535, 65535])       # Velocidad Alta Positiva
+# Definir las funciones de membresía de Velocidad
+VAN = fuzzy_membership(np.array([-65535, -43690, -21845]), 'triangular')
+VBN = fuzzy_membership(np.array([-43690, -21845, 0]), 'triangular')
+V0 = fuzzy_membership(np.array([-21845, -10000, 10000, 21845]), 'trapezoidal')
+VBP = fuzzy_membership(np.array([0, 21845, 43690]), 'triangular')
+VAP = fuzzy_membership(np.array([21845, 43690, 65535]), 'triangular')
 
 V = [VAN, VBN, V0, VBP, VAP]
 ```
