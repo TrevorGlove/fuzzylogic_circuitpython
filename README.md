@@ -3,6 +3,6 @@ FuzzyLib es una librería que implementa una lógica difusa en Circuitpython. Le
 
 ## Fuzzy Logic
 
-![Funciones de Membresía de Error de Velocidad y Derivada de Error de Velocidad](img/imagen.png)
+![Funciones de Membresía de Error de Velocidad y Derivada de Error de Velocidad](img/Membership.png)
 
 
