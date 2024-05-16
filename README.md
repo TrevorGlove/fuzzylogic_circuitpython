@@ -63,14 +63,14 @@ R = [[SPN, ENA, VAN],
      [SPP, EPB, VBP],
      [SPP, EPA, VAP]]
 ```
-La interpretación de esta matriz es que cada regla difusa se aplica por fila. Ejemplo:
+La interpretación de esta matriz se basa en que cada regla difusa se aplica por fila. Por ejemplo:
 
-Si el Setpoint es *Negativo* y el Error es "Negativo Alto", entonces la Velocidad es "Alta Negativa".
-Si el Setpoint es *Positivo* y el Error es "Negativo Corto", entonces la Velocidad es "Baja Negativa".
+Si el Setpoint es Negativo y el Error es Negativo Alto, entonces la Velocidad es Alta Negativa.
+Si el Setpoint es Positivo y el Error es Negativo Corto, entonces la Velocidad es Baja Negativa.
 
-Cabe recalcar que en esta versión solo se podia utilizar el operador "and". Con las actualizaciones, más operadores se va agregando, revisar la ocumentación en este repositorio.
+Es importante señalar que en esta versión solo se puede utilizar el operador "and". Sin embargo, con las actualizaciones, se están agregando más operadores. Puedes consultar la documentación en este repositorio para más detalles.
 
-Por último, se aplica las reglas difusas a cada entrada. El resultado es una combinación de trapecios en la salida. Fuzzy Lib identifica los valores fuzzificados de la salida y lo defuzzifica por el método de centroide para obtener el valor final de la salida.
+Finalmente, se aplican las reglas difusas a cada entrada. El resultado es una combinación de trapecios en la salida. Fuzzy Lib identifica los valores fuzzificados de la salida y los defuzzifica utilizando el método del centroide para obtener el valor final de la salida.
 
 ![Defuzzificación](img/Fuzzyfication.png)
 
