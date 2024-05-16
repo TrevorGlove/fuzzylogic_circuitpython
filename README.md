@@ -70,7 +70,7 @@ Si el Setpoint es Positivo y el Error es Negativo Corto, entonces la Velocidad e
 
 Es importante señalar que en esta versión solo se puede utilizar el operador "and". Sin embargo, con las actualizaciones, se están agregando más operadores. Puedes consultar la documentación en este repositorio para más detalles.
 
-Finalmente, se aplican las reglas difusas a cada entrada. El resultado es una combinación de trapecios en la salida. Fuzzy Lib identifica los valores fuzzificados de la salida y los defuzzifica utilizando el método del centroide para obtener el valor final de la salida.
+Finalmente, se aplican las reglas difusas a cada entrada. El resultado es una combinación de trapecios en la salida. Fuzzy Lib identifica los valores fuzzificados de la salida y los defuzzifica utilizando el método del centroide (otros métodos en próximas actualizaciones) para obtener el valor final de la salida. 
 
 ![Defuzzificación](img/Fuzzyfication.png)
 
