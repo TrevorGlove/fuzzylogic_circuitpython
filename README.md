@@ -65,8 +65,8 @@ R = [[SPN, ENA, VAN],
 ```
 La interpretación de esta matriz es que cada regla difusa se aplica por fila. Ejemplo:
 
-Si el Setpoint es *Negativo* y el Error es "Negativo Alto", entonces la Velocidad es "Alta Negativa"
-Si el Setpoint es *Positivo* y el Error es "Negativo Corto", entonces la Velocidad es "Baja Negativa"
+Si el Setpoint es *Negativo* y el Error es "Negativo Alto", entonces la Velocidad es "Alta Negativa".
+Si el Setpoint es *Positivo* y el Error es "Negativo Corto", entonces la Velocidad es "Baja Negativa".
 
 Cabe recalcar que en esta versión solo se podia utilizar el operador "and". Con las actualizaciones, más operadores se va agregando, revisar la ocumentación en este repositorio.
 
