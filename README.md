@@ -42,4 +42,4 @@ V = [VAN, VBN, V0, VBP, VAP]
 
 ![Funciones de Membresía de Error de Velocidad y Derivada de Error de Velocidad](img/Membership.png)
 
-
+Si utilizaramos listas y arreglos, utilizando la funcion gc.mem_free() nos sale que consume una memoria de 848 bytes. Con Ulab Numpy, se consume 576 bytes.
