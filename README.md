@@ -7,6 +7,26 @@ Para ilustrar cómo opera la lógica difusa en FuzzyLib, consideremos un ejemplo
 En primer lugar, es necesario definir las variables a fuzzificar, que en este caso son el setpoint y el error de posición.
 Posteriormente, debemos establecer las funciones de membresía de estas variables. En el código de FuzzyLib beta, esta definición se realizaba mediante tuplas:
 
+![Funciones de Membresía de Error de Velocidad y Derivada de Error de Velocidad](img/Membership.png)
+
+Si utilizaramos listas y arreglos, com la funcion gc.mem_free() nos sale que consume una memoria de 848 bytes. Con Ulab Numpy, esto de reduce a 576 bytes.
+
+Luego, se tienen que definir las Reglas Difusas. Por ejemplo:
+
+Si el Setpoint es Negativo y el Error es Negativo Alto, entonces la Velocidad es Alta Negativa.
+Si el Setpoint es Positivo y el Error es Negativo Corto, entonces la Velocidad es Baja Negativa.
+
+
+Finalmente, se aplican las reglas difusas a cada entrada. El resultado es una combinación de trapecios en la salida. Fuzzy Lib identifica los valores fuzzificados de la salida y los defuzzifica utilizando el método del centroide para obtener el valor final de la salida. 
+
+![Defuzzificación](img/Fuzzyfication.png)
+
+Ya con la idea de cómo funciona La lógica Difusa en FuzzyLib, te invito a revisar la documentación sobre las versiones.
+
+## FuzzyLib beta
+
+La versíon Beta de FuzzyLin no usa Circuitpython por lo que se puede utilizar tanto en Micropython y CircuitpYthon. Las funciones de membresía se declaran en tuplas y las reglas difusas en una matriz de listas.
+
 ```python
 # Definir Universos de entrada (error y setpoint) y salida (datacycle)
 sp = (-500, 500)
@@ -33,15 +53,7 @@ V0 = (-10000, 0, 10000)                  # Velocidad Cero
 VBP = (0, 21845, 43690)                  # Velocidad Baja Negativa
 VAP = (21845, 43690, 65535, 65535)       # Velocidad Alta Positiva
 V = [VAN, VBN, V0, VBP, VAP]
-```
 
-![Funciones de Membresía de Error de Velocidad y Derivada de Error de Velocidad](img/Membership.png)
-
-Si utilizaramos listas y arreglos, com la funcion gc.mem_free() nos sale que consume una memoria de 848 bytes. Con Ulab Numpy, esto de reduce a 576 bytes.
-
-Luego, se tienen que definir las Reglas Difusas. La forma de declarar las Reglas Difusas dependerá de la versión de la librería. En la versión 1.0, la forma de declarar era mediante esta matriz:
-
-```python
 # Definir las Reglas
 R = [(SPN, ENL, VAN),
      (SPN, ENC, VBN),
@@ -59,24 +71,8 @@ R = [(SPN, ENL, VAN),
      (SPP, EPC, VBP),
      (SPP, EPL, VAP)]
 ```
-La interpretación de esta matriz se basa en que cada regla difusa se aplica por fila. Por ejemplo:
-
-Si el Setpoint es Negativo y el Error es Negativo Alto, entonces la Velocidad es Alta Negativa.
-Si el Setpoint es Positivo y el Error es Negativo Corto, entonces la Velocidad es Baja Negativa.
-
-Es importante señalar que en esta versión solo se puede utilizar el operador "and". Sin embargo, con las actualizaciones, se están agregando más operadores. Puedes consultar la documentación en este repositorio para más detalles.
-
-Finalmente, se aplican las reglas difusas a cada entrada. El resultado es una combinación de trapecios en la salida. Fuzzy Lib identifica los valores fuzzificados de la salida y los defuzzifica utilizando el método del centroide para obtener el valor final de la salida. 
-
-![Defuzzificación](img/Fuzzyfication.png)
-
-Ya con la idea de cómo funciona La lógica Difusa en FuzzyLib, te invito a revisar la documentación sobre las versiones.
-
-## FuzzyLib beta
-
-La versíon Beta de FuzzyLin no usa Circuitpython por lo que se puede utilizar tanto en Micropython y CircuitpYthon. Las funciones de membresía se declaran en tuplas como se explicó en la teoría y las reglas difusas en la matriz R.
-
-Luego, se aplica el siguiente código:
+Es importante señalar que en esta versión solo se puede utilizar el operador "and".
+Luego, se aplica el siguiente código para la salida difusa:
 ```python
 Val = Fuzzy(R, x, (SP, E))
 print(Val)
