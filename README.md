@@ -72,7 +72,7 @@ Finalmente, se aplican las reglas difusas a cada entrada. El resultado es una co
 
 Ya con la idea de cómo funciona La lógica Difusa en FuzzyLib, te invito a revisar la documentación sobre las versiones.
 
-## beta
+## FuzzyLib beta
 
 La versíon Beta de FuzzyLin no usa Circuitpython por lo que se puede utilizar tanto en Micropython y CircuitpYthon. Las funciones de membresía se declaran en tuplas como se explicó en la teoría y las reglas difusas en la matriz R.
 
