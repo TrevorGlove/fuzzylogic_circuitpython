@@ -8,30 +8,31 @@ En primer lugar, es necesario definir las variables a fuzzificar, que en este ca
 Posteriormente, debemos establecer las funciones de membresía de estas variables. En el código, esta definición se realiza de la siguiente manera:
 
 ```python
-import ulab.numpy as np
+# Definir Universos de entrada (error y setpoint) y salida (datacycle)
+sp = (-500, 500)
+e = (-500, 500)
+v = (-65535, 65535)
 
-# Define las funciones de membresía del Setpoint
-SPN = fuzzy_membership(np.array([-500, -500, -100, -10]), 'trapezoidal')  # Setpoint Negativo
-SP0 = fuzzy_membership(np.array([-100, 0, 100]), 'triangular')            # Setpoint Cero
-SPP = fuzzy_membership(np.array([10, 100, 500, 500]), 'trapezoidal')      # Setpoint Positivo
-
-# Define las funciones de membresía del Error
-ENA = fuzzy_membership(np.array([-500, -500, -300, -15]), 'trapezoidal') # Error Negativo Alto
-ENB = fuzzy_membership(np.array([-300, -50, 15]), 'triangular')          # Error Negativo Bajo
-E0 = fuzzy_membership(np.array([-100, 0, 100]), 'triangular')            # Error Cero
-EPB = fuzzy_membership(np.array([-15, 50, 300]), 'triangular')           # Error Positivo Bajo
-EPA = fuzzy_membership(np.array([15, 300, 500, 500]), 'trapezoidal')     # Error Positivo Alto
-
-# Definir las funciones de membresía de Velocidad
-VAN = fuzzy_membership(np.array([-65535, -65535, -43690, -21845]), 'trapezoidal')   # Velocidad Alta Negativa
-VBN = fuzzy_membership(np.array([-43690, -21845, 0]), 'triangular')                 # Velocidad Baja Negativa
-V0 = fuzzy_membership(np.array([-10000, 0, 10000]), 'triangular')                   # Velocidad Cero
-VBP = fuzzy_membership(np.array([0, 21845, 43690]), 'triangular')                   # Velocidad Baja Positiva
-VAP = fuzzy_membership(np.array([21845, 43690, 65535, 65535]), 'trapezoidal')       # Velocidad Alta Positiva
-
+# Definir las funciones de membresía de entrada
+SPN = (-500, -500, -100, -10)  # Setpoint Negativo
+SP0 = (-100, 0, 100)            # Setpoint Cero
+SPP = (-10, 100, 500, 500)      # Setpoint Positivo
 SP = [SPN, SP0, SPP]
-ER = [ENA, ENB, E0, EPB, EPA]
-VL = [VAN, VBN, V0, VBP, VAP]
+
+ENL = (-500, -500, -300, -15)  # Error Negativo Lejano
+ENC = (-300, -50, 15)          # Error Negativo Cercano
+E0 = (-100, 0, 100)            # Error Cero
+EPC = (-15, 50, 300)           # Error Positivo Cercano
+EPL = (15, 300, 500, 500)      # Error Positivo Lejano
+E = [ENL, ENC, E0, EPC, EPL]
+
+# Definir las funciones de membresía de salida
+VAN = (-65535, -65535, -43690, -21845)   # Velocidad Alta Negativa
+VBN = (-43690, -21845, 0)                # Velocidad Baja Negativa
+V0 = (-10000, 0, 10000)                  # Velocidad Cero
+VBP = (0, 21845, 43690)                  # Velocidad Baja Negativa
+VAP = (21845, 43690, 65535, 65535)       # Velocidad Alta Positiva
+V = [VAN, VBN, V0, VBP, VAP]
 ```
 
 ![Funciones de Membresía de Error de Velocidad y Derivada de Error de Velocidad](img/Membership.png)
