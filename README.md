@@ -13,8 +13,8 @@ Si utilizaramos listas y arreglos, com la funcion gc.mem_free() nos sale que con
 
 Luego, se tienen que definir las Reglas Difusas. Por ejemplo:
 
-Si el Setpoint es Negativo y el Error es Negativo Alto, entonces la Velocidad es Alta Negativa.
-Si el Setpoint es Positivo y el Error es Negativo Corto, entonces la Velocidad es Baja Negativa.
+- Si el Setpoint es Negativo y el Error es Negativo Alto, entonces la Velocidad es Alta Negativa.
+- Si el Setpoint es Positivo y el Error es Negativo Corto, entonces la Velocidad es Baja Negativa.
 
 
 Finalmente, se aplican las reglas difusas a cada entrada. El resultado es una combinación de trapecios en la salida. Fuzzy Lib identifica los valores fuzzificados de la salida y los defuzzifica utilizando el método del centroide para obtener el valor final de la salida. 
