@@ -73,7 +73,6 @@ Es importante señalar que en esta versión solo se puede utilizar el operador "
 Luego, se aplica el siguiente código para la salida difusa:
 ```python
 Val = Fuzzy(R, x, (SP, E))
-print(Val)
 Lines_cut = Proyect(Val)
 Trapezoids = Cut(Lines_cut, Val)
 Vf = Defuzzy(Trapezoids, v, 100)
