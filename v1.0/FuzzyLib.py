@@ -1,5 +1,5 @@
-// FuzzyLib 1.0 por Robert Vásquez
-//@Trevor Glove
+# FuzzyLib 1.0 por Robert Vásquez
+# @Trevor Glove
 
 import ulab.numpy as np
 import math as mt
@@ -180,7 +180,6 @@ class fuzzyficator:
         self._membership_in = None
         self._membership_out = None
         self._entry = None
-        self._rules = None
         
     @property
     def rules(self):
