@@ -9,8 +9,6 @@ Posteriormente, debemos establecer las funciones de membresía de estas variable
 
 ![Funciones de Membresía de Error de Velocidad y Derivada de Error de Velocidad](img/Membership.png)
 
-Si utilizaramos listas y arreglos, com la funcion gc.mem_free() nos sale que consume una memoria de 848 bytes. Con Ulab Numpy, esto de reduce a 576 bytes.
-
 Luego, se tienen que definir las Reglas Difusas. Por ejemplo:
 
 - Si el Setpoint es Negativo y el Error es Negativo Alto, entonces la Velocidad es Alta Negativa.
