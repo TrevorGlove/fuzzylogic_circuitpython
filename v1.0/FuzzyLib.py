@@ -1,4 +1,4 @@
-# FuzzyLib 1.0 por Robert Vásquez
+# FuzzyLib v1.0 por Robert Vásquez
 # @Trevor Glove
 
 import ulab.numpy as np
