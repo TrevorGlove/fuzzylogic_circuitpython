@@ -23,7 +23,7 @@ Ya con la idea de cómo funciona La lógica Difusa en FuzzyLib, te invito a revi
 
 ## FuzzyLib beta
 
-La versíon Beta de FuzzyLin no usa Circuitpython por lo que se puede utilizar tanto en Micropython y CircuitpYthon. Las funciones de membresía se declaran en tuplas y las reglas difusas en una matriz de listas.
+La versíon Beta de FuzzyLin no usa Circuitpython por lo que se puede utilizar tanto en Micropython y Circuitpython. Las funciones de membresía se declaran en tuplas y las reglas difusas en una matriz de listas.
 
 ```python
 # Definir Universos de entrada (error y setpoint) y salida (datacycle)
