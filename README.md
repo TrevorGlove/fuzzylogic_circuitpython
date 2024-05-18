@@ -81,29 +81,29 @@ Vf = Defuzzy(Trapezoids, v, 100)
 ```python
 def Fuzzy(rules, x, variables_input), donde:
 ```
-- rules: Matriz de Reglas
-- x: Vector de entrada del bloque difuso
-- variables_input: Tupla con las entradas, cada entrada una lista con sus funciones de membresía
+- *rules*: Matriz de Reglas
+- *x*: Vector de entrada del bloque difuso
+- *variables_input*: Tupla con las entradas, cada entrada una lista con sus funciones de membresía
 - Salida: La función retorna un diccionario cuyas claves eran las tuplas de las funciones de membresía de salida y las claves sus valores de corte.
 
 ```python
 def Proyect(membership_out_values)
 ```
-- membership_out_values: Salida de la función Fuzzy.
+- *membership_out_values*: Salida de la función Fuzzy.
 - Salida: El código retorna un diccionario cuyas claves son las tuplas de la funciones de membresía de salida y las claves otra tupla con los nuevos puntos de las funciones de membresía cortados por sus valores de proyección.
 
 ```python
 def Cut(membership_out_proyect, membership_out_values)
 ```
-- membership_out_values: Salida de la función Fuzzy.
-- membership_out_proyect: Salida de la función Proyect.
+- *membership_out_values*: Salida de la función Fuzzy.
+- *membership_out_proyect*: Salida de la función Proyect.
 - Salida: La función retorna un diccionario cuyas tuplas son las tuplas de las funciones de membreía de salida y las claves una lista con lo puntos de las funciones de membresía cortados por sus valores de proyección concatenados con el valor de proyección.
 
 ```python
 def  Defuzzy(membership_out_proyect_values, universe_out, n)
 ```
-- membership_out_proyect_values: Salida de la función Cut.
-- universe out: Lista de los extremos del universo de salida.
-- n: Número de divisiones sobre el universo de salida.
+- *membership_out_proyect_values*: Salida de la función Cut.
+- *universe out*: Lista de los extremos del universo de salida.
+- *n*: Número de divisiones sobre el universo de salida.
 - Salida: La función retorna el centroide del poligono resultante de los trapecios de las funcuiones de membresía de salida.
 
