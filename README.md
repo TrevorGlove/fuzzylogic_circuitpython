@@ -71,3 +71,46 @@ Finalmente, se aplican las reglas difusas a cada entrada. El resultado es una co
 ![Defuzzificación](img/Fuzzyfication.png)
 
 Ya con la idea de cómo funciona La lógica Difusa en FuzzyLib, te invito a revisar la documentación sobre las versiones.
+
+## beta
+
+La versíon Beta de FuzzyLin no usa Circuitpython por lo que se puede utilizar tanto en Micropython y CircuitpYthon. Las funciones de membresía se declaran en tuplas como se explicó en la teoría y las reglas difusas en la matriz R.
+
+Luego, se aplica el siguiente código:
+```python
+Val = Fuzzy(R, x, (SP, E))
+print(Val)
+Lines_cut = Proyect(Val)
+Trapezoids = Cut(Lines_cut, Val)
+Vf = Defuzzy(Trapezoids, v, 100)
+```
+
+```python
+def Fuzzy(rules, x, variables_input), donde:
+```
+- rules: Matriz de Reglas
+- x: Vector de entrada del bloque difuso
+- variables_input: Tupla con las entradas, cada entrada una lista con sus funciones de membresía
+- Salida: La función retorna un diccionario cuyas claves eran las tuplas de las funciones de membresía de salida y las claves sus valores de corte.
+
+```python
+def Proyect(membership_out_values)
+```
+- membership_out_values: Salida de la función Fuzzy.
+- Salida: El código retorna un diccionario cuyas claves son las tuplas de la funciones de membresía de salida y las claves otra tupla con los nuevos puntos de las funciones de membresía cortados por sus valores de proyección.
+
+```python
+def Cut(membership_out_proyect, membership_out_values)
+```
+- membership_out_values: Salida de la función Fuzzy.
+- membership_out_proyect: Salida de la función Proyect.
+- Salida: La función retorna un diccionario cuyas tuplas son las tuplas de las funciones de membreía de salida y las claves una lista con lo puntos de las funciones de membresía cortados por sus valores de proyección concatenados con el valor de proyección.
+
+```python
+def  Defuzzy(membership_out_proyect_values, universe_out, n)
+```
+- membership_out_proyect_values: Salida de la función Cut.
+- universe out: Lista de los extremos del universo de salida.
+- n: Número de divisiones sobre el universo de salida.
+- Salida: La función retorna el centroide del poligono resultante de los trapecios de las funcuiones de membresía de salida.
+
