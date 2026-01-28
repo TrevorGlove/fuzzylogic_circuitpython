@@ -107,3 +107,6 @@ def  Defuzzy(membership_out_proyect_values, universe_out, n)
 - *n*: Número de divisiones sobre el universo de salida.
 - Salida: La función retorna el centroide del poligono resultante de los trapecios de las funcuiones de membresía de salida.
 
+## FuzzyLib v1.0
+
+
