@@ -109,4 +109,22 @@ def  Defuzzy(membership_out_proyect_values, universe_out, n)
 
 ## FuzzyLib v1.0
 
+Ahora con Ulab Numpy integrado
 
+```python
+# Definir las funciones de membresía de entrada
+EN = fuzzy_membership((-Emax, -Emax, -150, -20), 'trapezoidal')
+EZ = fuzzy_membership((-50, 0, 50), 'triangular')
+EP = fuzzy_membership((20, 150, Emax, Emax), 'trapezoidal'
+
+DN = fuzzy_membership((-DEmax, -DEmax, -50, -5), 'trapezoidal')
+DZ = fuzzy_membership((-20, 0, 20), 'triangular')
+DP = fuzzy_membership((5, 50, DEmax, DEmax), 'trapezoidal')
+
+# Definir las funciones de membresía de esalida
+VAN = fuzzy_membership((-65535, -65535, -40000, -20000), 'trapezoidal')
+VBN = fuzzy_membership((-30000, -10000, 0), 'triangular')
+V0  = fuzzy_membership((-5000, 0, 5000), 'triangular')
+VBP = fuzzy_membership((0, 10000, 30000), 'triangular')
+VAP = fuzzy_membership((20000, 40000, 65535, 65535), 'trapezoidal')
+```
