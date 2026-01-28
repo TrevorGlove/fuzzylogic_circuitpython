@@ -1,5 +1,5 @@
 # FuzzyLib v1.0 por Robert Vásquez
-# @Trevor Glove
+# @Trevor Glove 
 
 import ulab.numpy as np
 import math as mt
